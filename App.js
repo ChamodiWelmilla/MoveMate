@@ -1,14 +1,24 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import tw from "twrnc";
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View, TouchableWithoutFeedback, Keyboard, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from './src/context/Context';
+import Login from './src/screens/Login';
 
-export default function App() {
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={tw`flex-1 items-center justify-center bg-white`}>
-      <Text style={tw`text-red-500`}>
-        Open up App.js to start working on your app!
-      </Text>
-      <StatusBar style="auto" />
-    </View>
+    <Login />
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+})
+
+export default App;
