@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
-import { Entypo, FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 
 const Navbar = ({ navigation }) => {
   const navigateToScreen = (screenName) => {
@@ -23,8 +23,7 @@ const Navbar = ({ navigation }) => {
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems: "center",
-          height: "75%",
-          paddingVertical: "2%",
+          height: 75,
           backgroundColor: "#72a0c1",
           position: "absolute",
           bottom: 0,
@@ -32,20 +31,40 @@ const Navbar = ({ navigation }) => {
           right: 0,
         }}
       >
+        {/* Bottom tabs */}
         <BottomTab
           onPress={() => navigateToScreen("Home")}
           icon={<Entypo name="home" size={24} color="white" />}
           text="Home"
         />
-        <BottomTab
-          onPress={() => navigateToScreen("Notification")}
-          icon={<Ionicons name="notifications" size={22} color="white" />}
-          text="Notification"
-        />
+
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            bottom: 30,
+            alignSelf: "center",
+            width: 80,
+            height: 80,
+            borderRadius: 100,
+            backgroundColor: "#72a0c1",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1,
+            borderColor: "white",
+            borderWidth: 1,
+            marginHorizontal:"20%"
+          }}
+          onPress={() => navigateToScreen("Start")}
+        >
+          <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
+            START
+          </Text>
+        </TouchableOpacity>
+
         <BottomTab
           onPress={() => navigateToScreen("Profile")}
           icon={<Ionicons name="person" size={22} color="white" />}
-          text="Profile"
+          text="Account"
         />
       </View>
     </KeyboardAvoidingView>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, StatusBar, TextInput, } from "react-native";
+import { Text, View, Image, TextInput, } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 const Login = () => {
   return (
@@ -7,7 +8,7 @@ const Login = () => {
       <StatusBar style="light" />
       <Image
         className="h-45 w-full absolute"
-        source={require("../assets/images/background2.jpg")}
+        source={require("../assets/images/background.jpg")}
       />
       <View
         className="flex justify-center items-center mt-20 mx-4 space-y-4"

@@ -1,13 +1,31 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TextInput } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import Navbar from "../components/Navbar";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const Profile = () => {
   return (
-    <View style={{ backgroundColor: "white", height: "100%", width: "100%" }}>
+    <View>
       <StatusBar style="light" />
+      <View className="flex-row justify-end items-center mt-10 mx-5">
+        <MaterialCommunityIcons name="logout" size={30} color="black" />
+      </View>
+      <View className="flex-row ml-5 items-center space-y-1">
+        <MaterialIcons
+          name="account-circle"
+          size={40}
+          color="black"
+          style={{ marginTop: "8%" }}
+        />
+        <Text className="text-xl text-black mt-10 pt-12 mb-6">
+          Chamodi Welmilla
+        </Text>
+      </View>
+
       <View
-        className="flex h-40 w-90 justify-center items-center bg-[#72a0c1] mt-20 rounded-[10px] mx-3"
+        className="h-40 w-90 justify-center items-center bg-[#72a0c1] mt-4 rounded-[10px] mx-3"
         style={{ flexDirection: "row-reverse", alignItems: "center" }}
       >
         <Image
@@ -26,59 +44,40 @@ const Profile = () => {
           Want a better deal..
         </Text>
       </View>
+
       <View className="mt-7 mx-4">
-        <Text className="text-l" style={{ fontWeight: "bold" }}>
-          {" "}
+        <Text className="text-2xl" style={{ fontWeight: "semibold" }}>
           Suggestions
         </Text>
-        <View className="fles flex-row justify-between">
-          <View className="bg-[#DFE0E1] w-20 h-20 rounded-[10px] mt-4">
+        <View className="flex-row justify-around">
+          <View className="bg-[#f4f4f4] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
             <Image
               style={{
-                height: "100%",
-                width: "120%",
+                height: "75%",
+                width: "80%",
                 position: "absolute",
-                right: -5,
+                top: 10,
               }}
               source={require("../assets/images/parcel.png")}
             />
-            <Text>hi</Text>
+            <Text className="items-bottom pt-5 font-bold pb-2 color-[#72a0c1]">
+              Delivery Services
+            </Text>
           </View>
-          <View className="bg-[#DFE0E1] w-20 h-20 rounded-[10px] mt-4">
+
+          <View className="bg-[#f4f4f4] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
             <Image
               style={{
-                height: "100%",
-                width: "120%",
+                height: "80%",
+                width: "80%",
                 position: "absolute",
-                right: -5,
+                top: 10,
               }}
-              source={require("../assets/images/parcel.png")}
+              source={require("../assets/images/rent.png")}
             />
-            <Text>hi</Text>
-          </View>
-          <View className="bg-[#DFE0E1] w-20 h-20 rounded-[10px] mt-4">
-            <Image
-              style={{
-                height: "100%",
-                width: "120%",
-                position: "absolute",
-                right: -5,
-              }}
-              source={require("../assets/images/parcel.png")}
-            />
-            <Text>hi</Text>
-          </View>
-          <View className="bg-[#DFE0E1] w-20 h-20 rounded-[10px] mt-4">
-            <Image
-              style={{
-                height: "100%",
-                width: "120%",
-                position: "absolute",
-                right: -5,
-              }}
-              source={require("../assets/images/parcel.png")}
-            />
-            <Text>hi</Text>
+            <Text className="items-bottom pt-5 font-bold pb-2 color-[#72a0c1]">
+              Rental Services
+            </Text>
           </View>
         </View>
       </View>
@@ -106,6 +105,9 @@ const Profile = () => {
           </Text>
           <Text className="text-xs color-white">Terms apply ➙</Text>
         </View>
+      </View>
+      <View className="mt-7" style={{ height: 100 }}>
+        <Navbar />
       </View>
     </View>
   );
