@@ -6,11 +6,10 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { Entypo, Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const Navbar = ({ navigation }) => {
-  const navigateToScreen = (screenName) => {
-    navigation.navigate(screenName);
-  };
+const Navbar = () => { 
+    const navigation = useNavigation();
 
   return (
     <KeyboardAvoidingView
@@ -33,7 +32,7 @@ const Navbar = ({ navigation }) => {
       >
         {/* Bottom tabs */}
         <BottomTab
-          onPress={() => navigateToScreen("Home")}
+          onPress={() => navigation.navigate("Home")}
           icon={<Entypo name="home" size={24} color="white" />}
           text="Home"
         />
@@ -54,7 +53,7 @@ const Navbar = ({ navigation }) => {
             borderWidth: 1,
             marginHorizontal:"20%"
           }}
-          onPress={() => navigateToScreen("Start")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
             START
@@ -62,7 +61,7 @@ const Navbar = ({ navigation }) => {
         </TouchableOpacity>
 
         <BottomTab
-          onPress={() => navigateToScreen("Profile")}
+          onPress={() => navigation.navigate("Account")}
           icon={<Ionicons name="person" size={22} color="white" />}
           text="Account"
         />

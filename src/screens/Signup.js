@@ -9,13 +9,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Signup = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordStrength, setPasswordStrength] = useState("");
   const [errors, setErrors] = useState({
     phoneNumber: "",
     password: "",
@@ -29,19 +31,22 @@ const Signup = () => {
     return sriLankanPhoneRegex.test(phoneNumber);
   };
 
-  const evaluatePasswordStrength = (password) => {
-    if (password.length < 6) {
-      return "Weak";
-    } else if (password.match(/^(?=.*[A-Z])(?=.*\d).*$/)) {
-      return "Strong";
-    }
-    return "Medium";
+  const isPasswordValid = (password) => {
+    return (
+      password.length >= 6 && /[A-Z]/.test(password) && /\d/.test(password)
+    );
   };
 
   const handlePasswordChange = (text) => {
     setPassword(text);
-    const strength = evaluatePasswordStrength(text);
-    setPasswordStrength(strength);
+  };
+
+  const handleConfirmPasswordChange = (text) => {
+    setConfirmPassword(text);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      confirmPassword: password !== text ? "Passwords do not match." : "",
+    }));
   };
 
   const handleContinue = () => {
@@ -52,8 +57,8 @@ const Signup = () => {
       newErrors.phoneNumber = "Invalid phone number.";
       valid = false;
     }
-    if (passwordStrength === "Weak") {
-      newErrors.password = "Password is too weak.";
+    if (!isPasswordValid(password)) {
+      newErrors.password = "Invalid password.";
       valid = false;
     }
     if (password !== confirmPassword) {
@@ -64,14 +69,14 @@ const Signup = () => {
     setErrors(newErrors);
 
     if (valid) {
-      Alert.alert("Success", "Form submitted successfully!");
+      navigation.navigate("Login");
     }
   };
 
   const isContinueDisabled =
     !username ||
     !phoneNumber ||
-    passwordStrength === "Weak" ||
+    !isPasswordValid(password) ||
     password !== confirmPassword;
 
   return (
@@ -118,25 +123,18 @@ const Signup = () => {
                 onPress={() => setPasswordVisible(!passwordVisible)}
                 style={{ position: "absolute", right: 10, top: 12 }}
               >
-                <Text>{passwordVisible ? "Hide" : "Show"}</Text>
+                <Ionicons
+                  name={passwordVisible ? "eye-off" : "eye"}
+                  size={20}
+                  color="gray"
+                />
               </TouchableOpacity>
-              {passwordStrength ? (
-                <Text
-                  className={`text-xs ${
-                    passwordStrength === "Weak"
-                      ? "text-red-500"
-                      : passwordStrength === "Medium"
-                      ? "text-yellow-500"
-                      : "text-green-500"
-                  }`}
-                >
-                  Password Strength: {passwordStrength}
+              {!isPasswordValid(password) && (
+                <Text className="text-xs text-gray-500 color-red">
+                  Password must be at least 6 characters long, with an uppercase
+                  letter and a number.
                 </Text>
-              ) : null}
-              <Text className="text-xs text-gray-500 color-red">
-                Password must be at least 6 characters long, with an uppercase
-                letter and a number.
-              </Text>
+              )}
             </View>
 
             <View className="relative w-[250]">
@@ -144,7 +142,7 @@ const Signup = () => {
                 placeholder="Confirm Password"
                 secureTextEntry={!confirmPasswordVisible}
                 value={confirmPassword}
-                onChangeText={setConfirmPassword}
+                onChangeText={handleConfirmPasswordChange}
                 className="border-b-2 border-gray py-2"
               />
               <TouchableOpacity
@@ -153,14 +151,18 @@ const Signup = () => {
                 }
                 style={{ position: "absolute", right: 10, top: 12 }}
               >
-                <Text>{confirmPasswordVisible ? "Hide" : "Show"}</Text>
+                <Ionicons
+                  name={confirmPasswordVisible ? "eye-off" : "eye"}
+                  size={20}
+                  color="gray"
+                />
               </TouchableOpacity>
+              {errors.confirmPassword && (
+                <Text style={{ color: "red", fontSize: 12 }}>
+                  {errors.confirmPassword}
+                </Text>
+              )}
             </View>
-            {errors.confirmPassword ? (
-              <Text className="text-red-500 text-xs">
-                {errors.confirmPassword}
-              </Text>
-            ) : null}
           </View>
           <View className="flex justify-center items-center">
             <TouchableOpacity
@@ -177,7 +179,14 @@ const Signup = () => {
             </TouchableOpacity>
             <Text className="text-[#4d5161] pt-2 text-xs">
               Already on MoveMate?{"  "}
-              <Text className="text-blue-500">Login</Text>
+              <TouchableOpacity
+                style={{ marginTop: 10 }}
+                onPress={() => navigation.navigate("Login")}
+              >
+                <Text style={{ color: "blue", fontSize: 12.2, marginTop: 10 }}>
+                  Login
+                </Text>
+              </TouchableOpacity>
             </Text>
           </View>
         </ScrollView>

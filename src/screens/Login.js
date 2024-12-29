@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, TextInput, } from "react-native";
+import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
+import CustomButton from "../components/CustomButton";
 
 const Login = () => {
+  const navigation = useNavigation();
   return (
     <View className="bg-white h-full w-full">
       <StatusBar style="light" />
@@ -31,12 +34,20 @@ const Login = () => {
           </View>
         </View>
         <View className="flex justify-center items-center">
-          <Text className="bg-[#72a0c1] text-white px-6 py-3 rounded-[100px] text-base">
-            Login →
-          </Text>
+          <CustomButton
+            text="Login →"
+            onPress={() => navigation.navigate("Home")}
+          />
           <Text className="text-[#4d5161] pt-2 text-xs">
             Don't you have on MoveMate?{"  "}
-            <Text className="text-blue-500">Register</Text>
+            <TouchableOpacity
+              style={{ marginTop: 10 }}
+              onPress={() => navigation.navigate("Signup")}
+            >
+              <Text style={{ color: "blue", fontSize: 12.2, marginTop: 10 }}>
+                Signup
+              </Text>
+            </TouchableOpacity>
           </Text>
         </View>
       </View>

@@ -13,7 +13,7 @@
     "@expo-google-fonts/newsreader": "^0.2.3",
     "@react-native-picker/picker": "^2.10.2",
     "@react-navigation/native": "^6.1.17",
-    "@react-navigation/native-stack": "^6.9.26",
+    "@react-navigation/native-stack": "^6.11.0",
     "@react-navigation/stack": "^6.4.0",
     "axios": "^1.7.9",
     "expo": "^51.0.21",

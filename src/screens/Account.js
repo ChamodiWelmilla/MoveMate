@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-const Profile = () => {
+const Account = () => {
   return (
     <View>
       <StatusBar style="light" />
@@ -113,4 +113,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Account;
