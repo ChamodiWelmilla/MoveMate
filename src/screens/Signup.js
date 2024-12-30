@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  Image,
-  TextInput,
-  Alert,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Image, TextInput, ScrollView, TouchableOpacity,} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";

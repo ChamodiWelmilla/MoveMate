@@ -1,44 +1,30 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const Context = createContext();
 
 export const Provider = ({ children }) => {
-  const [details, setDetails] = useState({});
-  const [images, setImages] = useState([]);
-  const [loginLoading, setLoginLoading] = useState(true);
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
-  const [taskId, setTaskId] = useState('');
-  const [email, setEmail] = useState('');
+  const [bookmarkCount, setBookmarkCount] = useState(0);
 
-    return (
-        <Context.Provider
-          value={{
-            details,
-            setDetails,
-            images,
-            setImages,
-            loginLoading,
-            setLoginLoading,
-            name, 
-            setName,
-            date,
-            setDate,
-            taskId,
-            setTaskId,
-            email,
-            setEmail
-          }}
-        >
-          {children}
-        </Context.Provider>
-      );
+  const increment = (value) => {
+    setBookmarkCount((prevCount) => Math.max(0, prevCount + value)); // Prevent count from going below 0
+  };
+
+  return (
+    <Context.Provider
+      value={{
+        bookmarkCount,
+        increment,
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
 };
 
 export const useCustomContext = () => {
-    const context = useContext(Context);
-    if (!context) {
-      throw new Error('useRideContext must be used within a RideProvider');
-    }
-    return context;
+  const context = useContext(Context);
+  if (!context) {
+    throw new Error("useCustomContext must be used within a Provider");
+  }
+  return context;
 };

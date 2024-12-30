@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, TouchableOpacity, KeyboardAvoidingView,} from "react-native";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const Navbar = () => { 
-    const navigation = useNavigation();
+const Navbar = () => {
+  const navigation = useNavigation();
 
   return (
     <KeyboardAvoidingView
@@ -30,36 +25,11 @@ const Navbar = () => {
           right: 0,
         }}
       >
-        {/* Bottom tabs */}
         <BottomTab
           onPress={() => navigation.navigate("Home")}
           icon={<Entypo name="home" size={24} color="white" />}
           text="Home"
         />
-
-        <TouchableOpacity
-          style={{
-            position: "absolute",
-            bottom: 30,
-            alignSelf: "center",
-            width: 80,
-            height: 80,
-            borderRadius: 100,
-            backgroundColor: "#72a0c1",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1,
-            borderColor: "white",
-            borderWidth: 1,
-            marginHorizontal:"20%"
-          }}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
-            START
-          </Text>
-        </TouchableOpacity>
-
         <BottomTab
           onPress={() => navigation.navigate("Account")}
           icon={<Ionicons name="person" size={22} color="white" />}

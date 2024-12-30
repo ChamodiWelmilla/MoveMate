@@ -1,26 +1,45 @@
 import React from "react";
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Navbar from "../components/Navbar";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { useNavigation } from "@react-navigation/native";
 
-const Account = () => {
+const Account = ({ route }) => {
+  const { username } = route.params || {};
+  const navigation = useNavigation();
+
+  const handleLogout = () => {
+    navigation.navigate("Login");
+  };
+
   return (
     <View>
       <StatusBar style="light" />
       <View className="flex-row justify-end items-center mt-10 mx-5">
-        <MaterialCommunityIcons name="logout" size={30} color="black" />
+        <TouchableOpacity onPress={handleLogout}>
+          <MaterialCommunityIcons name="logout" size={30} color="black" />
+        </TouchableOpacity>
       </View>
-      <View className="flex-row ml-5 items-center space-y-1">
-        <MaterialIcons
-          name="account-circle"
-          size={40}
-          color="black"
-          style={{ marginTop: "8%" }}
-        />
-        <Text className="text-xl text-black mt-10 pt-12 mb-6">
-          Chamodi Welmilla
+      <View
+        className="flex-row ml-5 items-center space-y-1"
+        style={{ marginTop: "-10%" }}
+      >
+        <TouchableOpacity
+          style={{ marginTop: 10 }}
+          onPress={() => navigation.navigate("Login")}
+        >
+          <MaterialIcons
+            name="account-circle"
+            size={40}
+            color="black"
+            style={{ marginTop: "8%" }}
+          />
+        </TouchableOpacity>
+
+        <Text className=" text-black pt-8 ml-2 mb-6" style={{ fontSize: 16 }}>
+          Chamodi
         </Text>
       </View>
 
@@ -61,22 +80,22 @@ const Account = () => {
               source={require("../assets/images/parcel.png")}
             />
             <Text className="items-bottom pt-5 font-bold pb-2 color-[#72a0c1]">
-              Delivery Services
+              Cargo Services
             </Text>
           </View>
 
           <View className="bg-[#f4f4f4] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
             <Image
               style={{
-                height: "80%",
-                width: "80%",
+                height: "73%",
+                width: "73%",
                 position: "absolute",
                 top: 10,
               }}
-              source={require("../assets/images/rent.png")}
+              source={require("../assets/images/booking.jpg")}
             />
             <Text className="items-bottom pt-5 font-bold pb-2 color-[#72a0c1]">
-              Rental Services
+              Ticket Booking
             </Text>
           </View>
         </View>
@@ -106,7 +125,15 @@ const Account = () => {
           <Text className="text-xs color-white">Terms apply ➙</Text>
         </View>
       </View>
-      <View className="mt-7" style={{ height: 100 }}>
+
+      <View
+        style={{
+          position: "absolute",
+          top: "113%",
+          width: "100%",
+          height: 100,
+        }}
+      >
         <Navbar />
       </View>
     </View>
