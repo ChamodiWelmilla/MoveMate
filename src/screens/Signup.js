@@ -101,7 +101,7 @@ const Signup = () => {
               keyboardType="numeric"
             />
             {errors.phoneNumber ? (
-              <Text className="text-red-500 text-xs">{errors.phoneNumber}</Text>
+              <Text className="text-red text-xs" style={{top:"-8%", justifyContent:"flex-end", marginBottom:"-18%"}}>{errors.phoneNumber}</Text>
             ) : null}
             <View className="relative w-[250]">
               <TextInput

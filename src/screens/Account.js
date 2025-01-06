@@ -7,7 +7,6 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
 
 const Account = ({ route }) => {
-  const { username } = route.params || {};
   const navigation = useNavigation();
 
   const handleLogout = () => {
@@ -23,28 +22,7 @@ const Account = ({ route }) => {
         </TouchableOpacity>
       </View>
       <View
-        className="flex-row ml-5 items-center space-y-1"
-        style={{ marginTop: "-10%" }}
-      >
-        <TouchableOpacity
-          style={{ marginTop: 10 }}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <MaterialIcons
-            name="account-circle"
-            size={40}
-            color="black"
-            style={{ marginTop: "8%" }}
-          />
-        </TouchableOpacity>
-
-        <Text className=" text-black pt-8 ml-2 mb-6" style={{ fontSize: 16 }}>
-          Chamodi
-        </Text>
-      </View>
-
-      <View
-        className="h-40 w-90 justify-center items-center bg-[#72a0c1] mt-4 rounded-[10px] mx-3"
+        className="h-40 w-90 justify-center items-center bg-[#72a0c1] mt-10 rounded-[10px] mx-3"
         style={{ flexDirection: "row-reverse", alignItems: "center" }}
       >
         <Image
@@ -64,12 +42,12 @@ const Account = ({ route }) => {
         </Text>
       </View>
 
-      <View className="mt-7 mx-4">
+      <View className="mt-10 mx-4">
         <Text className="text-2xl" style={{ fontWeight: "semibold" }}>
           Suggestions
         </Text>
         <View className="flex-row justify-around">
-          <View className="bg-[#f4f4f4] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
+          <View className="bg-[#e8e7e7] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
             <Image
               style={{
                 height: "75%",
@@ -84,7 +62,7 @@ const Account = ({ route }) => {
             </Text>
           </View>
 
-          <View className="bg-[#f4f4f4] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
+          <View className="bg-[#e8e7e7] w-40 h-32 rounded-[10px] mt-4 flex justify-end items-center">
             <Image
               style={{
                 height: "73%",
@@ -102,7 +80,7 @@ const Account = ({ route }) => {
       </View>
 
       <View
-        className="flex h-40 w-90 justify-center items-center bg-[#72a0c1] mt-7 rounded-[10px] mx-3"
+        className="flex h-40 w-90 justify-center items-center bg-[#72a0c1] mt-8 rounded-[10px] mx-3"
         style={{ flexDirection: "row-reverse", alignItems: "center" }}
       >
         <Image

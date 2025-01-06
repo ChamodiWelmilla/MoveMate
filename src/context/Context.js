@@ -6,7 +6,7 @@ export const Provider = ({ children }) => {
   const [bookmarkCount, setBookmarkCount] = useState(0);
 
   const increment = (value) => {
-    setBookmarkCount((prevCount) => Math.max(0, prevCount + value)); // Prevent count from going below 0
+    setBookmarkCount((prevCount) => Math.max(0, prevCount + value)); 
   };
 
   return (

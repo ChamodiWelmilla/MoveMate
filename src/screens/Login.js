@@ -23,7 +23,7 @@ const Login = () => {
 
   return (
     <View className="bg-white h-full w-full">
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <Image
         className="h-45 w-full absolute"
         source={require("../assets/images/background.jpg")}
@@ -45,6 +45,7 @@ const Login = () => {
               borderBottomWidth: 2,
               borderColor: "gray",
               paddingVertical: 8,
+              underlineColorAndroid:"transparent"
             }}
           />
           <View style={{ position: "relative", width: 250 }}>
